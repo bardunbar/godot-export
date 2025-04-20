@@ -348,6 +348,8 @@ function findGodotExecutablePath(basePath: string): string | undefined {
   for (const subPath of paths) {
     const fullPath = path.join(basePath, subPath);
     const stats = fs.statSync(fullPath);
+    core.info(`full path ${fullPath}`);
+    core.info(`stats? ${stats}`);
     const isLinux = stats.isFile();// && (path.extname(fullPath) === '.64' || path.extname(fullPath) === '.x86_64');
     const isMac = process.platform === 'darwin' && stats.isDirectory() && path.extname(fullPath) === '.app';
     if (isLinux) {
